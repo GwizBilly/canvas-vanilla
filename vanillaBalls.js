@@ -1,3 +1,4 @@
+//source for this code: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_building_practice
 // setup canvas
 var canvas = document.querySelector('canvas');
 var ctx = canvas.getContext('2d');
