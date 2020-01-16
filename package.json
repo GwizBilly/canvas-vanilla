@@ -1,0 +1,25 @@
+{
+  "name": "canvas-vanilla",
+  "version": "1.0.0",
+  "description": "Demo project for HTML5 canavas",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GwizBilly/canvas-vanilla.git"
+  },
+  "keywords": [
+    "HTML5"
+  ],
+  "author": "Guillaume Savoie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GwizBilly/canvas-vanilla/issues"
+  },
+  "homepage": "https://github.com/GwizBilly/canvas-vanilla#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

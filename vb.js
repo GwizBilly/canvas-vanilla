@@ -5,102 +5,102 @@ var bod = document.querySelector('body');
 var width = canvas.width = window.innerWidth;
 var height = canvas.height = window.innerHeight;
 let $ = {
-	"r": function (min, max) {
-		let n;
-		let raw = Math.random() * (max - min);
-		n = Math.floor(raw) + min;
-		return n;
-	},
-	"balls": {
-		"count": 0,
-		"B":[]
-	},
-	"newBall": function (){
-		let nb = this.ball();
-		this.balls.B[this.balls.count] = nb;
-		this.balls.count += 1;
-		return true;
-		//make a ball
-		//push ball into balls.B[]
-	},
-	"ball": function () {
-		let size = this.r(10, 20),
-		    xc = this.r(0 + size, width - size),
-				yc = this.r(0 + size, height - size),
-				velx = this.r(-7, 7),
-				vely = this.r(-7, 7),
-				color = 'rgb(' + this.r(0,255) + 
-				           ',' + this.r(0,255) + 
-								   ',' + this.r(0,255) + ')'.
-				ID = this.count;
-		 let b = {
-			 "x" : xc,
-			 "y" : yc,
-			 "vx": velX,
-			 "vy": velY,
-			 "c" : color,
-			 "s" : size,
-			 "id": ID
-		 }
-		 return b;
-		//return initialized object {x,y,vx,vy,c,s}
-	},
-	"draw": function (_ball) {
-		ctx.beginPath();
-		ctx.fillStyle = _ball.c;
-		ctx.arc(
-			_ball.x, 
-			_ball.y, 
-			_ball.s, 
-			0, 
-			2 * Math.PI
-		);
-		ctx.fill();
-		// draw to canvas using ball object
-	},
-	"update": function (_ball) {
-		// update ball object
-		if((_ball.x + _ball.size) >= width) {
-			this.balls.B[_ball.id][vx] = -(_ball.velX);
-		}
-		if((_ball.x - _ball.size) <= 0) {
-			_ball.velX = -(_ball.velX);
-		}
-		if((_ball.y + _ball.size) >= height) {
-			_ball.velY = -(_ball.velY);
-		}
-		if((_ball.y - _ball.size) <= 0) {
-			_ball.velY = -(_ball.velY);
-		}
-		_ball.x += _ball.velX;
-		_ball.y += _ball.velY;
-		// probably want to return the updated ball... but also have stored it.
-	},
-	"collisionDetect": function (_ball) {
-		for(var j = 0; j < balls.length; j++) {
-			if(!(_ball === balls[j])) {
-				var dx = _ball.x - balls[j].x;
-				var dy = _ball.y - balls[j].y;
-				var distance = Math.sqrt(dx * dx + dy * dy);
-				if (distance < _ball.size + balls[j].size) {
-					balls[j].color = _ball.color = 'rgb(' + random(0,255) + ',' + random(0,255) + ',' + random(0,255) +')';
-				}
-			}
-		}
-	},
-	"init": function (_howManyBalls) {
-		// call new ball for _howManyBalls
-		// keep adding balls
-		for (let i = 0; i < _howManyBalls;) {
-			$.newBall();
-		}
-		console.log("You wanted this many balls");
-	}
+  "r": function (min, max) {
+    let n;
+    let raw = Math.random() * (max - min);
+    n = Math.floor(raw) + min;
+    return n;
+  },
+  "balls": {
+    "count": 0,
+    "B":[]
+  },
+  "newBall": function (){
+    let nb = this.ball();
+    this.balls.B[this.balls.count] = nb;
+    this.balls.count += 1;
+    return true;
+    //make a ball
+    //push ball into balls.B[]
+  },
+  "ball": function () {
+    let ID    = this.count,
+        size  = this.r(10, 20),
+        xc    = this.r(0 + size, width - size),
+        yc    = this.r(0 + size, height - size),
+        velx  = this.r(-7, 7),
+        vely  = this.r(-7, 7),
+        color = 'rgb(' + this.r(0,255) + ',' 
+				               + this.r(0,255) + ','
+											 + this.r(0,255) + ')';
+     let b = {
+       "id": ID,
+       "s" : size,
+       "x" : xc,
+       "y" : yc,
+       "vx": velx,
+       "vy": vely,
+       "c" : color
+     }
+     return b;
+    //return initialized object {x,y,vx,vy,c,s}
+  },
+  "draw": function (_ball) {
+    ctx.beginPath();
+    ctx.fillStyle = _ball.c;
+    ctx.arc(
+      _ball.x, 
+      _ball.y, 
+      _ball.s, 
+      0, 
+      2 * Math.PI
+    );
+    ctx.fill();
+    // draw to canvas using ball object
+  },
+  "update": function (_ball) {
+    // update ball object
+    if((_ball.x + _ball.size) >= width) {
+      this.balls.B[_ball.id][vx] = -(_ball.velX);
+    }
+    if((_ball.x - _ball.size) <= 0) {
+      _ball.velX = -(_ball.velX);
+    }
+    if((_ball.y + _ball.size) >= height) {
+      _ball.velY = -(_ball.velY);
+    }
+    if((_ball.y - _ball.size) <= 0) {
+      _ball.velY = -(_ball.velY);
+    }
+    _ball.x += _ball.velX;
+    _ball.y += _ball.velY;
+    // probably want to return the updated ball... but also have stored it.
+  },
+  "collisionDetect": function (_ball) {
+    for(var j = 0; j < balls.length; j++) {
+      if(!(_ball === balls[j])) {
+        var dx = _ball.x - balls[j].x;
+        var dy = _ball.y - balls[j].y;
+        var distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < _ball.size + balls[j].size) {
+          balls[j].color = _ball.color = 'rgb(' + random(0,255) + ',' + random(0,255) + ',' + random(0,255) +')';
+        }
+      }
+    }
+  },
+  "init": function (_howManyBalls) {
+    // call new ball for _howManyBalls
+    // keep adding balls
+    for (let i = 0; i < _howManyBalls;) {
+      $.newBall();
+    }
+    console.log("You wanted this many balls");
+  }
 }
 // How many balls do we want?
 $.init(25);
 function repeat() {
-	requestAnimationFrame(repeat);
+  requestAnimationFrame(repeat);
 }
 repeat();
 // function to generate random number
