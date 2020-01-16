@@ -6,3 +6,5 @@ To run the code, follow these steps:
 2. npm install
 3. npm test
 4. open browser to http://localhost:8080
+
+Have a look at the "Projects" tab to see what's going on with canvas-vanilla.
